@@ -18,6 +18,7 @@ item_sum = item_one + \
 print(item_sum)
 
 #---------------------数字类型：int bool float complex
+# 不同类型的数混合运算时会将整数转换为浮点数：
 print(type(1))
 # 虽然布尔型看起来是独立的，但它实际上是 int 的子类。True 的值等于 1，False 的值等于 0。
 print(type(True))
