@@ -101,131 +101,139 @@ print(f'{x+1=}')   # Python 3.8   x+1=2
 
 #----------------------------------------------------------------------字符串内建函数
 # capitalize() 
-# 将字符串的第一个字符转换为大写
-
+# 将字符串的第一个字符转换为大写，其他字母变为小写
+str_one = "hello world"
+print(str_one.capitalize())
 
 # center(width, fillchar) 
 # 返回一个指定的宽度 width 居中的字符串，fillchar 为填充的字符，默认为空格。
+print(str_one.center(20,"*"))
 
 # count(str, beg= 0,end=len(string)) 
 # 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数
+print(str_one.count("l"))
 
 # bytes.decode(encoding="utf-8", errors="strict") 
 # Python3 中没有 decode 方法，但我们可以使用 bytes 对象的 decode() 方法来解码给定的 bytes 对象，这个 bytes 对象可以由 str.encode() 来编码返回。
-
+print(str_one.encode().decode())
 # encode(encoding='UTF-8',errors='strict')
 # 以 encoding 指定的编码格式编码字符串，如果出错默认报一个ValueError 的异常，除非 errors 指定的是'ignore'或者'replace'
-
+print(str_one.encode(encoding='UTF-8',errors='strict'))
 # endswith(suffix, beg=0, end=len(string))
 # 检查字符串是否以 suffix 结束，如果 beg 或者 end 指定则检查指定的范围内是否以 suffix 结束，如果是，返回 True,否则返回 False。
-
+print(str_one.endswith("x"))
 # expandtabs(tabsize=8)
 # 把字符串 string 中的 tab 符号转为空格，tab 符号默认的空格数是 8 。
-
+print(str_one.expandtabs())
 # find(str, beg=0, end=len(string))
 # 检测 str 是否包含在字符串中，如果指定范围 beg 和 end ，则检查是否包含在指定范围内，如果包含返回开始的索引值，否则返回-1
-
+print(str_one.find("l"))
 # index(str, beg=0, end=len(string))
 # 跟find()方法一样，只不过如果str不在字符串中会报一个异常。
-
+print(str_one.index("l"))
 # isalnum()
 # 检查字符串是否由字母和数字组成，即字符串中的所有字符都是字母或数字。如果字符串至少有一个字符，并且所有字符都是字母或数字，则返回 True；否则返回 False。
-
+print(str_one.isalnum()) # False 
 # isalpha()
 # 检查字符串是否只由字母组成，即字符串中的所有字符都是字母。如果字符串至少有一个字符，并且所有字符都是字母，则返回 True；否则返回 False。
-
+print(str_one.isalpha()) # False 
 # isdecimal()
 # 检查字符串是否只由十进制数字组成，即字符串中的所有字符都是十进制数字。如果字符串至少有一个字符，并且所有字符都是十进制数字，则返回 True；否则返回 False。
-
+print(str_one.isdecimal()) # False 
 # isdigit()
 # 检查字符串是否只由数字组成，即字符串中的所有字符都是数字。如果字符串至少有一个字符，并且所有字符都是数字，则返回 True；否则返回 False。
-
+print(str_one.isdigit()) # False 
 # isidentifier()
 # 检查字符串是否是有效的 Python 标识符。如果字符串至少有一个字符，并且所有字符都是字母、数字或下划线，并且第一个字符不是数字，则返回 True；否则返回 False。
-
+print(str_one.isidentifier()) # False 
 # islower()
 # 检查字符串是否只由小写字母组成，即字符串中的所有字符都是小写字母。如果字符串至少有一个字符，并且所有字符都是小写字母，则返回 True；否则返回 False。
-
+print(str_one.islower()) # True
 # isnumeric()
 # 检查字符串是否只由数字组成，即字符串中的所有字符都是数字。如果字符串至少有一个字符，并且所有字符都是数字，则返回 True；否则返回 False。
-
+print(str_one.isnumeric()) # False 
 # isprintable()
 # 检查字符串是否只由可打印字符组成，即字符串中的所有字符都是可打印字符。如果字符串至少有一个字符，并且所有字符都是可打印字符，则返回 True；否则返回 False。
-
+print(str_one.isprintable()) # True
 # isspace()
 # 检查字符串是否只由空白字符组成，即字符串中的所有字符都是空白字符。如果字符串至少有一个字符，并且所有字符都是空白字符，则返回 True；否则返回 False。
-
+print(str_one.isspace()) # False 
 # istitle()
 # 检查字符串是否是标题化的，即字符串中的每个单词的首字母都是大写，其余字母都是小写。如果字符串至少有一个字符，并且是标题化的，则返回 True；否则返回 False。
+print(str_one.istitle()) # False
 
 # isupper()
 # 检查字符串是否只由大写字母组成，即字符串中的所有字符都是大写字母。如果字符串至少有一个字符，并且所有字符都是大写字母，则返回 True；否则返回 False。
+print(str_one.isupper()) # False
 
 # join(iterable)
 # 将可迭代对象中的所有元素连接成一个字符串，元素之间用字符串分隔。如果可迭代对象中的元素不是字符串，则会报一个 TypeError 异常。
-
+print("-".join(["a", "b", "c"])) # a-b-c
 # ljust(width, fillchar)
 # 返回一个指定的宽度 width 居左的字符串，fillchar 为填充的字符，默认为空格。
-
+print(str_one.ljust(20, "*")) # hello world*********
 # lower()
 # 将字符串中的所有字符转换为小写。
-
+print(str_one.lower()) # hello world
 # lstrip(chars)
 # 返回一个字符串的副本，其中开头的指定字符被删除。如果 chars 未指定，则删除开头的空白字符。
-
+print(str_one.lstrip('h')) # ello world
 # partition(sep)
 # 将字符串分割成三部分：分隔符之前的部分、分隔符本身和分隔符之后的部分。如果分隔符不存在，则返回字符串本身和两个空字符串。
-
+print(str_one.partition("o")) # ('hell', 'o', ' world')
 # replace(old, new, count)
 # 返回一个字符串的副本，其中所有出现的 old 都被 new 替换。如果 count 未指定，则替换所有出现的 old。
-
+print(str_one.replace("o", "*")) # hell* w*rld
 # rfind(str, beg=0, end=len(string))
 # 跟 find() 方法一样，只不过是从字符串的末尾开始查找。
-
+print(str_one.rfind("o")) # 7
 # rindex(str, beg=0, end=len(string))
 # 跟 index() 方法一样，只不过是从字符串的末尾开始查找。
-
+print(str_one.rindex("o")) # 7
 # rpartition(sep)
 # 将字符串分割成三部分：分隔符之前的部分、分隔符本身和分隔符之后的部分。如果分隔符不存在，则返回两个空字符串和字符串本身。
-
+print(str_one.rpartition("o")) # ('hell', 'o', ' world')
 # rjust(width, fillchar)
 # 返回一个原字符串右对齐，并使用 fillchar（默认空格）填充至长度 width 的新字符串。
-
+print(str_one.rjust(20, "*")) # *********hello world
 # rstrip(chars)
 # 返回一个字符串的副本，其中结尾的指定字符被删除。如果 chars 未指定，则删除结尾的空白字符。
-
+print(str_one.rstrip('d')) # hello worl
 # split(sep=None, maxsplit=-1)
 # 将字符串分割成一个列表，元素之间用分隔符分隔。如果分隔符未指定，则按空白字符分割。如果 maxsplit 未指定，则分割所有出现的分隔符。
-
+print(str_one.split(" ")) # ['hello', 'world']
 # splitlines(keepends=False)
 # 将字符串分割成一个列表，元素之间用换行符分隔。如果 keepends 为 True，则保留换行符。
-
+print(str_one.splitlines()) # 使用\n分割 ['hello world']
 # startswith(prefix, beg=0, end=len(string))
 # 检查字符串是否以 prefix 开始，如果 beg 或者 end 指定则检查指定的范围内是否以 prefix 开始，如果是，返回 True,否则返回 False。
-
+print(str_one.startswith("hello")) # True
 # strip(chars)
 # 返回一个字符串的副本，其中开头的和结尾的指定字符被删除。如果 chars 未指定，则删除开头的和结尾的空白字符。
-
+print(str_one.strip()) # hello world
 # swapcase()
 # 将字符串中的所有大写字母转换为小写，所有小写字母转换为大写。
-
+print(str_one.swapcase())
 # title()
 # 将字符串中的每个单词的首字母转换为大写，其余字母转换为小写。
-
+print(str_one.title())
 # translate(table, deletechars="")
 # 返回一个字符串的副本，其中所有出现的指定字符都被替换。如果 deletechars 未指定，则不删除任何字符。
-
+table = str.maketrans('aeiou', '12345')  # a->1, e->2, i->3, o->4, u->5
+result = str_one.translate(table)
+print(result)  # 输出: h2ll4 w4rld
 # upper()
 # 将字符串中的所有字符转换为大写。
-
+print(str_one.upper()) # HELLO WORLD
 # zfill(width)
 # 返回一个指定的宽度 width 的字符串，左侧用零填充。
-
+print(str_one.zfill(20)) # 0000000000hello world
 # maketrans()
 # 创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。
-
+print(str.maketrans('aeiou', '12345')) # {'a': 1, 'e': 2, 'i': 3, 'o': 4, 'u': 5}  {97: 49, 101: 50, 105: 51, 111: 52, 117: 53}
 # max(str)
 # 返回字符串中最大的字符。
-
+print(max(str_one)) # w
 # min(str)
 # 返回字符串中最小的字符。
+print(min(str_one)) #
