@@ -4,7 +4,7 @@
 # 基本语法 
 # [表达式 for 变量 in 可迭代对象 if 条件]
 
-# 列表推导式
+# ----------------------------------------------------列表推导式   转换、过滤序列数据
 # 传统方式
 sequence = [1, 2, 3, 4, 5]
 new_sequence = []
@@ -15,7 +15,9 @@ print(new_sequence)
 # 推导式
 new_sequence = [x * x for x in sequence if x % 2 == 0]
 print(new_sequence)
-# 字典推导式
+
+
+# ----------------------------------------------------字典推导式   映射关系构建、键值互换
 # 传统方式
 sequence = [1, 2, 3, 4, 5]
 new_sequence = {}
@@ -26,7 +28,9 @@ print(new_sequence)
 # 推导式
 new_sequence = {x: x * x for x in sequence if x % 2 == 0}
 print(new_sequence)
-# 集合推导式
+
+
+# ----------------------------------------------------集合推导式  需要唯一值的序列
 # 传统方式
 sequence = [1, 2, 3, 4, 5]
 new_sequence = set()
@@ -37,7 +41,10 @@ print(new_sequence)
 # 推导式
 new_sequence = {x * x for x in sequence if x % 2 == 0}
 print(new_sequence)
-# 元组推导式  元组是不可变的  
+
+
+# ----------------------------------------------------元组推导式  处理大数据量，节省内存 生成器表达式
+# 元组是不可变的  
 # 生成器表达式  元组推导式返回的结果是一个生成器对象。
 # 传统方式  元组不可变，所以先用列表收集，最后转为元组
 sequence = [1, 2, 3, 4, 5]
