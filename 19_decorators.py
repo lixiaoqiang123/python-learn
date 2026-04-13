@@ -69,13 +69,99 @@ def say_hello():
 say_hello()
 
 # -----------------------------------------------------------类装饰器
+# 函数形式的类装饰器
+def log_class(cls):
+    """类装饰器，在调用方法前后打印日志"""
+    class Wrapper:
+        def __init__(self, *args, **kwargs):
+            self.wrapped = cls(*args, **kwargs)  # 实例化原始类
+        
+        def __getattr__(self, name):
+            """拦截未定义的属性访问，转发给原始类"""
+            return getattr(self.wrapped, name)
+        
+        def display(self):
+            print(f"调用 {cls.__name__}.display() 前")
+            self.wrapped.display()
+            print(f"调用 {cls.__name__}.display() 后")
+    
+    return Wrapper  # 返回包装后的类
 
+@log_class
+class MyClass:
+    def display(self):
+        print("这是 MyClass 的 display 方法")
+
+obj = MyClass()
+obj.display()
+
+# 类形式的类装饰器(实现__call__方法)
+class SingletonDecorator:
+    """类装饰器，使目标类变成单例模式"""
+    def __init__(self, cls):
+        self.cls = cls
+        self.instance = None
+    
+    def __call__(self, *args, **kwargs):
+        """拦截实例化过程，确保只创建一个实例"""
+        if self.instance is None:
+            self.instance = self.cls(*args, **kwargs)
+        return self.instance
+
+@SingletonDecorator
+class Database:
+    def __init__(self):
+        print("Database 初始化")
+
+db1 = Database()
+db2 = Database()
+print(db1 is db2)  # True，说明是同一个实例
 
 # -----------------------------------------------------------内置装饰器
 
+class MyClass:
+    @staticmethod
+    def static_method():
+        print("This is a static method.")
 
+    @classmethod
+    def class_method(cls):
+        print(f"This is a class method of {cls.__name__}.")
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+# 使用
+MyClass.static_method()
+MyClass.class_method()
+
+obj = MyClass()
+obj.name = "Alice"
+print(obj.name)
 # -----------------------------------------------------------多个装饰器的堆叠
+def decorator1(func):
+    def wrapper():
+        print("Decorator 1")
+        func()
+    return wrapper
 
+def decorator2(func):
+    def wrapper():
+        print("Decorator 2")
+        func()
+    return wrapper
+
+@decorator1
+@decorator2
+def say_hello():
+    print("Hello!")
+
+say_hello()
 
 # 闭包
 # 即使外部函数已经执行完毕，内部函数依然能“记住”并访问外部函数中的变量。
